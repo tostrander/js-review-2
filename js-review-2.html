@@ -40,6 +40,17 @@
     console.log(objEquals(obj, {here: {is: "another"}, object: 2}));
     console.log(objEquals(obj, {here: {isnt: "an"}, object: 2}));
 
+    var array;
+    array = [[1, 2, 3], [4, 5], [6]];
+
+    function flatten(array) {
+        array = array.reduce((flat, current) => flat.concat(current), []);
+        return array.toString();
+    }
+
+    console.log(flatten(array));
+
+
 </script>
 </body>
 </html>
