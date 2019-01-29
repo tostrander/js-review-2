@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Review 2</title>
+</head>
+<body>
+<script>
+    var obj = {here: {is: "an"}, object: 2};
+
+    function objEquals(object1, object2) {
+        var keys1 = Object.keys(object1);
+        var keys2 = Object.keys(object2);
+
+        if (object1 === object2) {
+            return true
+        }
+
+        if (object1 == null || typeof object1 != "object" || object2 == null || typeof object2 != "object") {
+            return false;
+        }
+
+        if (keys1.length != keys2.length) {
+            return false;
+        }
+
+        for (var key of keys1) {
+            if (!keys2.includes(key) || !objEquals(object1[key], object2[key])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    console.log(objEquals(obj, obj));
+    console.log(objEquals(obj, {here: 1, object: 2}));
+    console.log(objEquals(obj, {here: {is: "an"}, object: 2}));
+    console.log(objEquals(obj, {here: {is: "an"}, object: 0}));
+    console.log(objEquals(obj, {here: {is: "another"}, object: 2}));
+    console.log(objEquals(obj, {here: {isnt: "an"}, object: 2}));
+
+</script>
+</body>
+</html>
